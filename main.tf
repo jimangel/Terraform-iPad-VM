@@ -1,11 +1,30 @@
+# Setup Google provider
+########################
 provider "google" {
   project = var.project_id
 }
 
+# Deny all ingress traffic firewall rule based on "yolo" tag
+#############################################################
+resource "google_compute_firewall" "default" {
+  name    = "yolo-deny"
+  network = "default"
+
+  deny {
+    protocol = "all"
+  }
+
+  source_tags = ["yolo"]
+}
+
+# Create GCP VM
+################
 resource "google_compute_instance" "default" {
   name         = var.vm_name
   machine_type = var.machine_type
   zone         = var.availability_zone
+
+  tags = ["yolo"]
 
   boot_disk {
     initialize_params {

@@ -2,11 +2,11 @@
 
 Create a VM on Google Cloud to do dev work on an iPad.
 
-Why would anyone want to do this:
+Why anyone wants to do this:
 
-- Traveling with two laptops (work and personal) sucks.
-- I can use the iPad as my social consumption device *and* developer laptop.
-- It's fun to play with tech and push the limits.
+- Traveling with two laptops (work and personal) is clunky
+- I can use the iPad as my social consumption device *and* developer laptop
+- It's fun to play with tech and push the limits
 
 ## Assumptions
 
@@ -17,6 +17,10 @@ Why would anyone want to do this:
 - An iPad
   - with the [Tailscale](https://tailscale.com/kb/1020/install-ios?q=ipad) client installed for VPN access.
   - with the [blink.sh](https://blink.sh/) app installed for terminal access.
+
+## Overview
+
+![](/img/banner.jpg)
 
 ## Setup
 
@@ -161,7 +165,7 @@ Search machine types with `gcloud compute machine-types list --zones=YOUR_ZONE`
 export TF_VAR_machine_type=YOUR_TYPE
 ```
 
-*Defaults to: e2-standard-2
+*Defaults to: e2-medium
 
 e2 instances from cheapest to more expensive:
 - e2-micro (2x1GB shared CPU)
