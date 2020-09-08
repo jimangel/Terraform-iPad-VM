@@ -23,8 +23,8 @@ Why would anyone want to do this:
 On your non-iPad Linux workstation clone the repo
 
 ```
-git clone <THIS REPO>
-cd <THIS REPO>
+git clone git@github.com:jimangel/Terraform-iPad-VM.git
+cd Terraform-iPad-VM
 ```
 
 ### Get a one-off Tailscale authorization key
