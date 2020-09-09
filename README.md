@@ -13,10 +13,10 @@ Why anyone wants to do this:
 - The following CLI tools installed on a **non-iPad** Linux workstation:
   - [terraform](https://www.terraform.io/downloads.html)
   - [gcloud](https://cloud.google.com/sdk/docs/quickstart-debian-ubuntu)
-- A [Tailscale](https://tailscale.com/) account setup for WireGuard VPN management.
+- A (free) [Tailscale](https://tailscale.com/) account setup for WireGuard VPN management.
 - An iPad
-  - with the [Tailscale](https://tailscale.com/kb/1020/install-ios?q=ipad) client installed for VPN access.
-  - with the [blink.sh](https://blink.sh/) app installed for terminal access.
+  - with the (free) [Tailscale](https://tailscale.com/kb/1020/install-ios?q=ipad) client installed for VPN access.
+  - with the ($20) [blink.sh](https://blink.sh/) app installed for terminal access.
 
 ## Overview
 
@@ -162,24 +162,23 @@ export TF_VAR_vm_name=YOUR_NAME
 Search machine types with `gcloud compute machine-types list --zones=YOUR_ZONE`
 
 ```
+# Defaults to: e2-medium
 export TF_VAR_machine_type=YOUR_TYPE
+
+# e2 instances from cheapest to more expensive:
+# - e2-micro (2x1GB shared CPU)
+# - e2-small (2x2GB shared CPU)
+# - e2-medium (2x4GB shared CPU)
+# - e2-standard-2 (2x8GB dedicated CPU)
 ```
-
-*Defaults to: e2-medium
-
-e2 instances from cheapest to more expensive:
-- e2-micro (2x1GB shared CPU)
-- e2-small (2x2GB shared CPU)
-- e2-medium (2x4GB shared CPU)
-- e2-standard-2 (2x8GB dedicated CPU)
 
 ## Troubleshooting
 
 - Check the output of `startup_script`.
 
-```
-sudo journalctl -u google-startup-scripts.service
-```
+    ```
+    sudo journalctl -u google-startup-scripts.service
+    ```
 
 - Delete Hosts or Keys in blink.sh navigate to them by typing `config` and then swipe left > `Delete`.
 
@@ -190,3 +189,14 @@ sudo journalctl -u google-startup-scripts.service
     ```
 
     Navigate to: `Tailscale_IP`:8443
+
+- Forward / tunnel ports to your ipad
+
+    Use two fingers to tap your blink.sh shell (opens a new terminal). Change between the terminals by swiping right or left. Run:
+
+    ```
+    ssh -L LOCALPORT:localhost:REMOTEPORT
+    # ex: ssh -L 1313:localhost:1313
+    ```
+
+    As long as that terminal session is open, the tunnel will exist.
