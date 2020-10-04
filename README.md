@@ -195,8 +195,8 @@ export TF_VAR_machine_type=YOUR_TYPE
     Use two fingers to tap your blink.sh shell (opens a new terminal). Change between the terminals by swiping right or left. Run:
 
     ```
-    ssh -L LOCALPORT:localhost:REMOTEPORT
-    # ex: ssh -L 1313:localhost:1313
+    ssh -L LOCALPORT:localhost:REMOTEPORT <REMOTE IP>
+    # ex: ssh -L 1313:localhost:1313 192.168.1.250
     ```
 
     As long as that terminal session is open, the tunnel will exist.
