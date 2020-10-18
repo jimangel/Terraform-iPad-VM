@@ -20,5 +20,5 @@ variable "vm_name" {
 
 variable "tailscale_key" {
   type    = string
-  default = null
+  default = ""
 }

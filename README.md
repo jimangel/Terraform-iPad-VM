@@ -61,10 +61,11 @@ Export the project ID as a Terraform variable
 export TF_VAR_project_id=$(gcloud config get-value core/project 2>/dev/null)
 ```
 
-Export GCP auth token for Terraform (valid for 1 hour)
+Export GCP auth token (valid for 1 hour) and project for Terraform
 
 ```
-export GOOGLE_OAUTH_ACCESS_TOKEN=$(gcloud auth print-access-token)
+export GOOGLE_OAUTH_ACCESS_TOKEN="$(gcloud auth print-access-token)"
+export GOOGLE_PROJECT="$(gcloud config get-value project)"
 ```
 
 Dry-run to initialize and plan the deployment

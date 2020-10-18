@@ -17,6 +17,21 @@ resource "google_compute_firewall" "default" {
   source_tags = ["yolo"]
 }
 
+# Allow IAP ssh from gcloud only to this GCE instance
+###############################################################
+resource "google_compute_firewall" "allow_iap_ssh" {
+  name    = "iap-allow"
+  network = "default"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
+
+  source_ranges = ["35.235.240.0/20"]
+  target_tags = ["yolo"]
+}
+
 # Create GCP VM
 ################
 resource "google_compute_instance" "default" {
